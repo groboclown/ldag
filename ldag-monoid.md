@@ -92,7 +92,7 @@ If ϕ is fixed, this becomes a fold over the graph structure itself; if ϕ varie
 
 ### Morphism Mapping
 
-Given *f*:*G*→*H* in **LDAG**<sub>ℕ</sub>​, define:
+Given *f*:*G*→*H* in **LDAG**<sub>*L*</sub>​, define:
 > ***F***(*f*):***F***(*G*)→***F***(*H*)
 
 as a monoid homomorphism that maps folded values consistently.
