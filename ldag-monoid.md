@@ -43,7 +43,7 @@ A morphism *f*:*G*→*H* between labeled DAGs *G*=(*V*,*E*,ℓ) and *H*=(*V*′,
 * Label order preservation:
   > ℓ(*u*)<ℓ(*v*)⇒ℓ′(*f*(*u*))<ℓ′(*f*(*v*))
 
-This implies that edge direction is retained in the homomorphism.
+This implies that edge structure (including direction) is retained in the homomorphism.
 
 ### Identity and Composition
 
@@ -57,24 +57,24 @@ This implies that edge direction is retained in the homomorphism.
 
 ### As a Category
 
-We can view this LDAG<sub>ℕ</sub> as a concrete category:
+We can view this LDAG<sub>*L*</sub> as a concrete category:
 
 * Objects: DAGs + labeling,
 * Morphisms: graph homomorphisms preserving structure and label order,
 * Identity and composition respect both structure and label semantics.
 
-This means isomorphic DAGs with different labelings are different objects.
+This means that for two LDAG<sub>*L*</sub> to be isomorphic, both the DAGs and labels must be isomorphic.
 
 ## Folding
 
 We then define a fold functor:
-> ***F***:**LDAG**<sub>*L*</sub>→**Mon**
+> ***F***:LDAG<sub>*L*</sub>→**Mon**
 
 where:
 
 * **Mon**: category of monoids, with objects as monoids (*M*,⋅,*e*) and morphisms are monoid homomorphisms.
 
-This functor will evaluate a labeled DAG into a single monoid value by folding over its vertex labels (possibly enriched with edge information).
+This functor will evaluate a labeled DAG into a single monoid value by folding over its vertex labels.
 
 ### Object Mapping
 
@@ -87,7 +87,8 @@ where:
 * Vertices are processed in ascending order of ℓ.
 
 Thus, the DAG is folded in label order to produce a single monoid value.
-> If ϕ is fixed, this becomes a fold over the graph structure itself; if ϕ varies per graph, it could be part of a natural transformation or higher structure.
+
+If ϕ is fixed, this becomes a fold over the graph structure itself; if ϕ varies per graph, it could be part of a natural transformation or higher structure.
 
 ### Morphism Mapping
 
@@ -96,7 +97,7 @@ Given *f*:*G*→*H* in **LDAG**<sub>ℕ</sub>​, define:
 
 as a monoid homomorphism that maps folded values consistently.
 
-If ϕ<sub>H</sub>∘*f*=ϕ<sub>*G*</sub>ϕ<sub>H</sub>​∘*f*=ϕ<sub>*G*</sub>​, then:
+If ϕ<sub>*H*</sub>∘*f*=ϕ<sub>*G*</sub>ϕ<sub>H</sub>​∘*f*=ϕ<sub>*G*</sub>​, then:
 > ***F***(*f*)(⋅ϕ<sub>*G*</sub>(<sub>v</sub>))=⋅ϕ<sub>*H*</sub>(*f*(*v*))
 
 so ***F***(*f*) is the induced monoid morphism from the relabeling of vertex evaluations.
@@ -105,8 +106,8 @@ The morphism must satisfy:
 
 * Graph homomorphism condition
 
-  For every edge (*u*→*v*)∈E*G*​, we must have:
-    > (f(u)→f(v))∈EH
+  For every edge (*u*→*v*)∈*E*<sub>*G*</sub>​, we must have:
+    > (*f*(*u*)→*f*(*v*))∈*E*<sub>*H*</sub>
 
   This preserves the edge structure.
 
